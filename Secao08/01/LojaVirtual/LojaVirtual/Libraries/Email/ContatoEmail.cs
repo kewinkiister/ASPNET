@@ -15,16 +15,33 @@ namespace LojaVirtual.Libraries.Email
             /*
              * SMTP -> Servidor que vai enviar a menssagem 
              */
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("kevinkiister0@gmail.com", "140044299");
-            smtp.EnableSsl = true;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential("kevinkiister0@gmail.com", "69098585"),
+                EnableSsl = true
+            };
+
+            string corpoMsg = string.Format("<h2>Contato - LojaVirtual</h2>"+
+                "<b>Nome: {0}</b> <br />" +
+                "<b>Email: {1}</b> <br />" +
+                "<b>Texto: {2}</b> <br />" +
+                "<br /> Email enviado automaticamento do site LojaVirtual.", contato.Nome, contato.Email, contato.Texto);
 
             /*
              * MailMenssage -> Contrutor da menssagem
              */
 
-            MailMessage message = new MailMessage();
+            MailMessage menssage = new MailMessage
+            {
+                From = new MailAddress("kevinkiister0@gmail.com")
+            };
+            menssage.To.Add("kevinkiister0@gmail.com");
+            menssage.Subject = "Contato - LojaVirtual - Email: " + contato.Email;
+            menssage.Body = corpoMsg;
+            menssage.IsBodyHtml = true;
+
+            smtp.Send(menssage);
         }
 
     }
