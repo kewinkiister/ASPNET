@@ -18,7 +18,7 @@ namespace LojaVirtual.Libraries.Email
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
             {
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("kevinkiister0@gmail.com", "69098585"),
+                Credentials = new NetworkCredential("kevinkiister0@gmail.com", ""),
                 EnableSsl = true
             };
 
