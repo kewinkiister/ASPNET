@@ -20,10 +20,16 @@ namespace LojaVirtual.Controllers
         [HttpPost]
         public IActionResult Index([FromForm]NewsletterEmail newsletter)
         {
-            //TODO - Adicao no banco de dados
-            //TODO - Validacoes
+            if (ModelState.IsValid)
+            {
+                //TODO - Adicao no banco de dados
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View();
+            }
 
-            return View();
         }
 
         public IActionResult Contato()

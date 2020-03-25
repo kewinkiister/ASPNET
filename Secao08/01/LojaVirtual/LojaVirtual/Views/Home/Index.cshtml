@@ -186,9 +186,10 @@
                             <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                         </div>
                         @Html.EditorFor(m=>m.Email, new { htmlAttributes = new { @class="form-control"} })
-                        
-                    </div> <!-- input-group.// -->
-                </div> <!-- form-group.// -->
+
+                    </div> 
+                    <span style="color:red;">@Html.ValidationMessageFor(m=>m.Email)</span>
+                </div> 
 
 
             </div>
